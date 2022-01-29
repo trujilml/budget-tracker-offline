@@ -24,9 +24,8 @@ self.addEventListener('install', function (e) {
             console.log("Caches have been installed!" + CACHE_NAME)
             return cache.addAll(FILES_TO_CACHE)
         })
-    );
-    self.skipWaiting();
-});
+    )
+})
 
 self.addEventListener('activate', function (e) {
     e.waitUntil(
@@ -46,20 +45,21 @@ self.addEventListener('activate', function (e) {
             );
         })
     );
-    self.clients.claim();
 });
 
 self.addEventListener('fetch', function (e) {
     console.log("Fetching the request..." + e.request.url)
-    e.respondWith(
+    e.respondWith( 
         caches.match(e.request).then(function (request) {
-            if (request) {
-                console.log("Responding with cache: " + e.request.url)
-                return request
-            } else {
-                console.log("The file is not cached, fetching : " + e.request.url)
-                return fetch(e.request)
-            }
+            // if (request) {
+            //     console.log("Responding with cache: " + e.request.url);
+            //     return request
+            // } else {
+            //     console.log("The file is not cached, fetching : " + e.request.url);
+            //     return fetch(e.request)
+            // }
+
+            return request
         })
     )
-});
+})

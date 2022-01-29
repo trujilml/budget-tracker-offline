@@ -6,14 +6,14 @@ request.onupgradeneeded = function(event) {
     
     const db = event.target.result;
 
-    db.createObjectStore('transaction', {autoIncrement: true});
+    db.createObjectStore('trans_action', {autoIncrement: true});
 };
 
 request.onsuccess = function(event) {
 
     db = event.target.result;
 
-    if(navigator.online) {
+    if(navigator.onLine) {
         uploadTransaction();
     }
 };
@@ -23,23 +23,23 @@ request.onerror = function(event) {
 };
 
 function saveRecord(record) {
-    const transaction = db.transaction(['transaction'], 'readwrite');
+    const transaction = db.transaction(['trans_action'], 'readwrite');
 
-    const budgetObjectStore = transaction.ObjectStore('transaction');
+    const budgetObjectStore = transaction.objectStore('trans_action');
 
     budgetObjectStore.add(record);
 }
 
 function uploadTransaction() {
-    const transaction = db.transaction(['transaction'], 'readwrite');
+    const transaction = db.transaction(['trans_action'], 'readwrite');
 
-    const budgetObjectStore = transaction.ObjectStore('transaction');
+    const budgetObjectStore = transaction.objectStore('trans_action');
 
     const getAll = budgetObjectStore.getAll();
 
     getAll.onsuccess = function() {
         if (getAll.result.length > 0) {
-            fetch('/api/transaction/bulk', {
+            fetch("/api/transaction", {
                 method: 'POST', 
                 body: JSON.stringify(getAll.result),
                 headers: {
@@ -53,9 +53,9 @@ function uploadTransaction() {
                 throw new Error(serverResponse);
             }
 
-            const transaction = db.transaction(['transaction'], 'readwrite');
+            const transaction = db.transaction(['trans_action'], 'readwrite');
 
-            const budgetObjectStore = transaction.ObjectStore('transaction');
+            const budgetObjectStore = transaction.objectStore('trans_action');
 
             budgetObjectStore.clear();
 
@@ -65,7 +65,7 @@ function uploadTransaction() {
           console.log(err);
         }));
     }
-};
+}
 }
 
 
