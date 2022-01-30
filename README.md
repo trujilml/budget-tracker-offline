@@ -1,74 +1,48 @@
-# budget-tracker-offline
+# Budget-Tracker Offline
 
-Your Task
-Giving users a fast and easy way to track their money is important, but allowing them to access that information at any time is even more important. Having offline functionality is paramount to the success of an application that handles users’ financial information.
+![Budget-Tracker GIF](./demo/budget-tracker.gif)
+![Budget-Tracker Offline Screenshot-1](./demo/budget-tracker-offline.png)
 
-Your challenge this week is to update an existing budget tracker application to allow for offline access and functionality. The user will be able to add expenses and deposits to their budget with or without a connection. If the user enters transactions offline, the total should be updated when they're brought back online. Once you’ve made these changes, you’ll deploy the application to Heroku.
+This is a budget tracker application that allows for offline access and functionality. Users are able to add their expenses and deposits to their budget with or without a internet connection. Their offline transactions will be updated when brought back from offline.
 
-User Story
-AS AN avid traveler
-I WANT to be able to track my withdrawals and deposits with or without a data/internet connection
-SO THAT my account balance is accurate when I am traveling 
+## Description
 
-Acceptance Criteria
-GIVEN a budget tracker without an internet connection
-WHEN the user inputs an expense or deposit
-THEN they will receive a notification that they have added an expense or deposit
-WHEN the user reestablishes an internet connection
-THEN the deposits or expenses added while they were offline are added to their transaction history and their totals are updated
+On this application, users are able to track their deposits and withdrawls from this budget with or without a internet or data connection. 
 
-Getting Started
-Review the following lessons to complete this challenge.
+![Budget-Tracker-Offline Online-Functionality Screenshot-2](./demo/budget-tracker-offline-onlinefunctionality.png)
 
-Offline Functionality
-You’ll need to use IndexedDB to add offline functionality. Review Module 18: NoSQL, Lesson 4: Add Offline Persistence with IndexedDB as a refresher on how to add this to your application.
+Without an internet connection, users are able to input a deposit or withdrawal of their money. Once the user is returned to an stable internet connection, the deposit or withdrawl they made offline will be added to their transaction history and their total will be updated, proven by a notification from the broswer.
 
-You’ll also need to add a service worker to your application. Review Module 19: Progressive Web Applications (PWA), Lesson 4: Using Service Workers as a refresher on how to add this to your application.
+![Budget-Tracker-Offline Offline-Functionality Screenshot-3](./demo/budget-tracker-offlinefunctionality1.png)
+![Budget-Tracker-Offline Offline-Functionality Screenshot-3](./demo/budget-tracker-offlinefunctionality2.png)
 
-IMPORTANT
-You should add your idb.js file to the public/js/ directory of your application.
+## Table of Contents
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Developed With](#Developed-with)
 
-You should add your service worker to the root of the public/ directory of your application.
+## Installation
+- While this application is online and deployed from Heroku, this file can be cloned through GitHub using the above Code button.
+- The following npm packages listed in the `Developed With` tab are required to be installed in order to test the application. Use `npm i` in the Terminal to install them and `npm start` to run the test server of the website.
 
-Once you’ve updated the existing budget tracker, it should provide the following functionality:
+## Usage
 
-The ability to enter deposits offline.
+- The URL of the functional, deployed application. 
 
-The ability to enter expenses offline.
+- The URL of the GitHub repository, with a unique name and a README describing the project.
+https://github.com/trujilml/budget-tracker-offline
 
-Offline entries should be added to the tracker when the application is brought back online.
+## Developed With
 
-Web Manifest
-Because this will be a mobile-first application, you’ll also need to add a web manifest to your application with the app’s metadata, to let users’ devices know what they’re installing and how the app should look on the home screen.
-
-This manifest.json file for this project will contain the following properties:
-
-name
-
-short_name
-
-icons
-
-theme_color
-
-background_color
-
-start_url
-
-display
-
-In the module project, you used webpack to create the manifest.json file. For this application, you’ll need to create it manually and add it to the root of the public/ directory of your application. You can also review Module 19: Progressive Web Applications (PWA), Lesson 5: Convert the App to a PWA as a refresher on web manifests.
-
-Deployment to Heroku Using MongoDB Atlas
-Finally, the budget tracker has a server and uses MongoDB as its database, so you’ll need to deploy this application to Heroku using MongoDB Atlas. To review this process, look at Module 18: NoSQL, Lesson 5: Add Mongoose Validation, specifically 18.5.5: Deploy to Heroku.
-
-
-
-
-How to Submit the Challenge
-You are required to submit BOTH of the following for review:
-
-The URL of the functional, deployed application.
-
-The URL of the GitHub repository, with a unique name and a README describing the project.
-
+- Progressive Web Application (PWA) - an application software that is delivered through the web, using service workers, manifest files, and other enhancement techniques used to give users a great experience on the application.
+- Compression - Data compression middleware. - https://github.com/expressjs/compression
+- Express.js - Web framework connected with MongoDB and Mongoose, functions transaction routes for the API. - https://expressjs.com/ 
+- IndexedDB - A low-level API application for client-side storage of structured data, used to trigger the transaction event for the application.
+- MongoDB - A NoSQL database that is an open-source document database allowing data to be formatted easier than a regular SQL database. - https://www.mongodb.com/
+- Mongoose - Schema based solution to model application data, acts as a front-end to MongoDB. - https://mongoosejs.com/
+- Morgan - HTTP request logger middleware for node.js - https://www.npmjs.com/package/morgan
+- MongoDB Atlas - Multi-cloud database server that is used to deploy this application with its respective MongoDB database - https://www.mongodb.com/atlas/database
+- Heroku - Cloud platform used to deploy this application in a web link from its respective CLI.
+- Node.js - Back-end development software, JavaScript runtime environment that runs these npm package applications.
+- JavaScript - Back-end development code
