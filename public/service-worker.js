@@ -24,7 +24,7 @@ self.addEventListener('install', function (e) {
             console.log("Caches have been installed!" + CACHE_NAME);
             return cache.addAll(FILES_TO_CACHE)
         })
-    )
+    );
 });
 
 self.addEventListener('activate', function (e) {
@@ -53,11 +53,11 @@ self.addEventListener('fetch', function (e) {
         caches.match(e.request).then(function (request) {
             if (request) {
                 console.log("Responding with cache: " + e.request.url);
-                return request
+                return request;
             } else {
                 console.log("The file is not cached, fetching : " + e.request.url);
-                return fetch(e.request)
+                return fetch(e.request);
             }
         })
-    )
+    );
 });
