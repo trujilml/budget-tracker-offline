@@ -3,7 +3,10 @@ const VERSION = 'version_01';
 const CACHE_NAME = APP_PREFIX + VERSION;
 const FILES_TO_CACHE = [
     "/",
-    "./index.html",
+    "/index.html",
+    "/js/idb.js",
+    "/js/index.js",
+    "/manifest.json",
     "./css/styles.css",
     "/icons/icon-72x72.png",
     "/icons/icon-96x96.png",
@@ -12,20 +15,17 @@ const FILES_TO_CACHE = [
     "/icons/icon-152x152.png",
     "/icons/icon-192x192.png",
     "/icons/icon-384x384.png",
-    "/icons/icon-512x512.png",
-    "/js/idb.js",
-    "/js/index.js",
-    "/manifest.json"
+    "/icons/icon-512x512.png"
 ];
 
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
-            console.log("Caches have been installed!" + CACHE_NAME)
+            console.log("Caches have been installed!" + CACHE_NAME);
             return cache.addAll(FILES_TO_CACHE)
         })
     )
-})
+});
 
 self.addEventListener('activate', function (e) {
     e.waitUntil(
@@ -48,7 +48,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    console.log("Fetching the request..." + e.request.url)
+    console.log("Fetching the request..." + e.request.url);
     e.respondWith( 
         caches.match(e.request).then(function (request) {
             if (request) {
@@ -60,4 +60,4 @@ self.addEventListener('fetch', function (e) {
             }
         })
     )
-})
+});
