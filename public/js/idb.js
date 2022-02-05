@@ -39,7 +39,7 @@ function uploadTransaction() {
 
     getAll.onsuccess = function() {
         if (getAll.result.length > 0) {
-            fetch("/api/transaction", {
+            fetch("/api/transaction/bulk", {
                 method: 'POST', 
                 body: JSON.stringify(getAll.result),
                 headers: {
@@ -61,9 +61,9 @@ function uploadTransaction() {
 
             alert('Transaction has been submitted!');
         })
-        .catch((err => {
+        .catch(err => {
           console.log(err);
-        }));
+        });
     }
 }
 }
